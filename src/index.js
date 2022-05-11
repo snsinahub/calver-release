@@ -18,11 +18,13 @@ async function run() {
     
     const octokit = github.getOctokit(myToken)
 
-    const ooutput = octokit.rest.repos.getReleaseByTag({
+    const output = octokit.rest.repos.getReleaseByTag({
         owner,
         repo,
         tag,
       });
+
+    console.log("OUTPUT: " + output)
 }
 
 run();
