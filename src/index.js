@@ -10,7 +10,7 @@ async function run() {
     const tag = core.getInput('tag');
     const allowedUsers = core.getInput('allowed_users');
     const repo = repoFull[1]
-    const owner = repoFull[2]
+    const owner = repoFull[0]
 
 
     
