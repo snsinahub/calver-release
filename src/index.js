@@ -1,8 +1,6 @@
 const {_} = require('lodash')
 const github = require('@actions/github');
 const core = require('@actions/core');
-const { exec } = require("child_process");
-var args = process.argv.slice(2);
 
 
 
