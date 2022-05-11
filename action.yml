@@ -1,0 +1,15 @@
+name: getTag
+description: check who triggers the action and returns false or true if user is in allowed_users list
+inputs:
+  repo:
+    required: true
+  tag:
+    required: true
+  token:
+    required: true
+outputs:
+  allowed:
+    description: boolean value
+runs:
+  using: "node16"
+  main: src/index.js
