@@ -18,10 +18,10 @@ async function run() {
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
     try{
-        const output = await ooctokit.rest.repos.listTags({
-            owner,
-            repo,
-          });
+        const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
+            owner: owner,
+            repo: repo
+          })
         console.log("OUTPUT: " + JSON.stringify(output, null, 2))
         console.log("TAG: ")
     } catch(e) {
