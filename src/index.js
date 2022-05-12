@@ -7,8 +7,7 @@ const moment = require('moment-timezone');
 
 async function run() {
     const myToken = core.getInput('token');
-    const repoFull = core.getInput('repo').split('/');
-    const tag = core.getInput('tag');
+    const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const repo = repoFull[1]
     const owner = repoFull[0]

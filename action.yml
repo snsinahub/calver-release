@@ -3,8 +3,6 @@ description: check who triggers the action and returns false or true if user is 
 inputs:
   repo:
     required: true
-  tag:
-    required: true
   token:
     required: true
 outputs:
