@@ -17,13 +17,18 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-
-    const output = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
-        owner: owner,
-        repo: repo,
-        tag: tag
-      }) 
-    console.log("OUTPUT: " + JSON.stringify(output, null, 2))
+    try{
+        const output = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
+            owner: owner,
+            repo: repo,
+            tag: tag
+          }) 
+        console.log("OUTPUT: " + JSON.stringify(output, null, 2))
+        console.log("TAG: ")
+    } catch(e) {
+        console.log("error: " + JSON.stringify(e, null, 2))
+    }
+    
 }
 
 run();
