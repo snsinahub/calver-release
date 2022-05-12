@@ -18,7 +18,8 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment(new Date()).format('YYYYMD'); 
+    // let today=moment(new Date()).format('YYYYMD'); 
+    let today='20220511'
     console.log("FORMAT: ", today)
     // try{
         const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
@@ -26,12 +27,18 @@ async function run() {
             repo: repo
           })
         let matches = _.filter(output['data'], function(obj){
-            return obj.name.includes(today + '')
+            return obj.name.includes(today + '.')
         })
      
                 
         let allTags = _.map(matches, 'name')
+        let arrLen = allTags.length        
         console.log("TAG: "+ allTags)
+        let iteration = 1
+        if(arrLen > 0) {
+            let sorted = _.sortBy(allTags)
+            console.log("SORTED: "+ sorted)
+        }
         
 
     // } catch(e) {
