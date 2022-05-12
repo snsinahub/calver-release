@@ -18,40 +18,33 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    // let today=moment(new Date()).format('YYYYMD'); 
-    let today='20220511'
+    let today=moment(new Date()).format('YYYYMD'); 
+    
     console.log("FORMAT: ", today)
-    // try{
-        const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
-            owner: owner,
-            repo: repo
-          })
-        let matches = _.filter(output['data'], function(obj){
-            return obj.name.includes(today + '.')
+    
+    const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
+        owner: owner,
+        repo: repo
         })
-     
-                
-        let allTags = _.map(matches, 'name')
-        let arrLen = allTags.length        
-        console.log("TAG: "+ allTags)
-        let iteration = 0
-        if(arrLen > 0) {
-            let sorted = _.sortBy(allTags)
-            console.log("SORTED: "+ sorted)
-            console.log("LAST: " + sorted[(arrLen-1)])
-            let iterationArr = sorted[(arrLen-1)].split('.')
-            iteration = parseInt(iterationArr[1])
-        }
+    let matches = _.filter(output['data'], function(obj){
+        return obj.name.includes(today + '.')
+    })
+    
+            
+    let allTags = _.map(matches, 'name')
+    let arrLen = allTags.length            
+    let iteration = 0
+    if(arrLen > 0) {
+        let sorted = _.sortBy(allTags)
+        let iterationArr = sorted[(arrLen-1)].split('.')
+        iteration = parseInt(iterationArr[1])
+    }
 
-        iteration = iteration + 1
-        let newTag = today + "." + iteration
-        console.log("NEW TAG: " + newTag)
-        core.setOutput("newTag", newTag)
+    iteration = iteration + 1
+    let newTag = today + "." + iteration
+    console.log("NEW TAG: " + newTag)
+    core.setOutput("newTag", newTag)
         
-
-    // } catch(e) {
-    //     console.log("error: " + JSON.stringify(e, null, 2))
-    // }
     
 }
 
