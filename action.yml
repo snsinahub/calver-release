@@ -8,8 +8,8 @@ inputs:
   token:
     required: true
 outputs:
-  allowed:
-    description: boolean value
+  newTag:
+    description: newTag
 runs:
   using: "node16"
   main: src/index.js
