@@ -18,7 +18,7 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment().format('YYYYmmdd'); 
+    let today=moment(new Date()).format('YYYYmmdd'); 
     console.log("FORMAT: ", today)
     // try{
         const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
