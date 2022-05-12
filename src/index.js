@@ -23,12 +23,12 @@ async function run() {
             repo: repo
           })
         let matches = _.filter(output['data'], function(obj){
-            let matched = obj.name.includes('20220511.')
-            return _.map(matched, 'name')
+            return obj.name.includes('20220511.')
         })
         console.log("MATCHES: " + JSON.stringify(matches, null, 2))
                 
-        
+        let allTags = _.map(matches, 'name')
+        console.log("TAG: "+ allTags)
         
 
     // } catch(e) {
