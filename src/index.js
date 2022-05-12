@@ -1,7 +1,7 @@
-const {_} = require('lodash')
 const github = require('@actions/github');
 const core = require('@actions/core');
-
+const ld = require( 'lodash' );
+const _ = ld.noConflict();
 
 
 async function run() {
