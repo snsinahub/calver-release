@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const github = require('@actions/github');
 const core = require('@actions/core');
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 
 
@@ -18,7 +18,7 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment(new Date()).format('YYYYMD'); 
+    let today=moment(new Date()).tz("America/New_York").format('YYYYMD'); 
     
     console.log("FORMAT: ", today)
     
