@@ -45,6 +45,7 @@ async function run() {
 
         iteration = iteration + 1
         let newTag = today + "." + iteration
+        console.log("NEW TAG: " + newTag)
         core.setOutput("newTag", newTag)
         
 
