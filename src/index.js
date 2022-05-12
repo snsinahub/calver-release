@@ -24,7 +24,7 @@ async function run() {
         tag,
       });
 
-    console.log("OUTPUT: " + output)
+    console.log("OUTPUT: " + JSON.stringify(output, null, 2))
 }
 
 run();
