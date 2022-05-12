@@ -17,7 +17,7 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    try{
+    // try{
         const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
             owner: owner,
             repo: repo
@@ -27,9 +27,9 @@ async function run() {
         let allTags = _.pluck(output['data'], 'name')
         console.log("TAG: "+ allTags)
 
-    } catch(e) {
-        console.log("error: " + JSON.stringify(e, null, 2))
-    }
+    // } catch(e) {
+    //     console.log("error: " + JSON.stringify(e, null, 2))
+    // }
     
 }
 
