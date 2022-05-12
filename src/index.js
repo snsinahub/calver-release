@@ -18,12 +18,11 @@ async function run() {
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
 
-    const output = octokit.rest.repos.getReleaseByTag({
-        owner,
-        repo,
-        tag,
-      });
-
+    const output = await octokit.request('GET /repos/{owner}/{repo}/releases/tags/{tag}', {
+        owner: owner,
+        repo: repo,
+        tag: tag
+      }) 
     console.log("OUTPUT: " + JSON.stringify(output, null, 2))
 }
 
