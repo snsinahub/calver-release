@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const github = require('@actions/github');
 const core = require('@actions/core');
+const moment = require('moment');
 
 
 
@@ -17,15 +18,17 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
+    let today=moment().format('YYYYmmdd'); 
+    console.log("FORMAT: ", today)
     // try{
         const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
             owner: owner,
             repo: repo
           })
         let matches = _.filter(output['data'], function(obj){
-            return obj.name.includes('20220511.')
+            return obj.name.includes(today + '')
         })
-        console.log("MATCHES: " + JSON.stringify(matches, null, 2))
+     
                 
         let allTags = _.map(matches, 'name')
         console.log("TAG: "+ allTags)
