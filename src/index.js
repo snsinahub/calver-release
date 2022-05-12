@@ -22,7 +22,7 @@ async function run() {
             owner: owner,
             repo: repo
           })
-        console.log("OUTPUT: " + JSON.stringify(output, null, 2))
+        console.log("OUTPUT: " + JSON.stringify(output['data'], null, 2))
         
         let data = output['data']
         console.log("DATA: "+ JSON.stringify(data, null, 2))
