@@ -23,7 +23,11 @@ async function run() {
             repo: repo
           })
         console.log("OUTPUT: " + JSON.stringify(output, null, 2))
-        console.log("TAG: ")
+        
+        let data = output['data']
+        let allTags = _.pluck(data, 'name')
+        console.log("TAG: "+ JSON.stringify(allTags, null, 2))
+
     } catch(e) {
         console.log("error: " + JSON.stringify(e, null, 2))
     }
