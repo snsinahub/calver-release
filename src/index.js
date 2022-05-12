@@ -17,7 +17,7 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment(new Date()).tz("America/New_York").format('YYYYMD'); 
+    let today=moment(new Date()).tz("America/New_York").format('YYYYMMD'); 
     
     console.log("FORMAT: ", today)
     
