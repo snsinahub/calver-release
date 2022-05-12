@@ -1,7 +1,7 @@
+const _ = require('lodash')
 const github = require('@actions/github');
 const core = require('@actions/core');
-const ld = require( 'lodash' );
-const _ = ld.noConflict();
+
 
 
 async function run() {
@@ -24,7 +24,7 @@ async function run() {
           })
         // console.log("OUTPUT: " + JSON.stringify(output['data'], null, 2))
                 
-        let allTags = _.pluck(output['data'], 'name')
+        let allTags = _.map(output['data'], 'name')
         console.log("TAG: "+ allTags)
 
     // } catch(e) {
