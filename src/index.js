@@ -25,6 +25,7 @@ async function run() {
         console.log("OUTPUT: " + JSON.stringify(output, null, 2))
         
         let data = output['data']
+        console.log("DATA: "+ JSON.stringify(data, null, 2))
         let allTags = _.pluck(data, 'name')
         console.log("TAG: "+ JSON.stringify(allTags, null, 2))
 
