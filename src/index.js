@@ -37,7 +37,7 @@ async function run() {
     console.log("arrLen " + arrLen)
     let itr = []
     for (let i = 0; i < arrLen; i++) {
-        let temp = allTags.split('.')
+        let temp = allTags[i].split('.')
         itr[i] = temp[(temp.length-1)]
     }
     console.log("ITR " + itr)
