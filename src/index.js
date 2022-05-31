@@ -42,7 +42,11 @@ async function run() {
     }
     console.log("ITR " + itr)
     let sortedItr = _.sortBy(itr)
-    let lastItr = sortedItr[(sortedItr.length-1)]
+    console.log("sortedItr " + sortedItr)
+    let lastItr = parseInt(sortedItr[(sortedItr.length-1)])
+
+    console.log("sortedItr.length-1 " + (sortedItr.length-1))
+    console.log("sortedItr " + sortedItr)
     // if(arrLen > 0) {
     //     let sorted = _.sortBy(allTags)
     //     console.log("sorted " + sorted)
@@ -55,7 +59,7 @@ async function run() {
     //     console.log("iteration " + iteration)
     // }
 
-    iteration = lastItr + 1
+    iteration = (lastItr + 1)
     let newTag = today + "." + iteration
     console.log("NEW TAG: " + newTag)
     core.setOutput("newTag", newTag)
