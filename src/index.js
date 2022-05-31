@@ -7,6 +7,7 @@ const moment = require('moment-timezone');
 
 async function run() {
     const myToken = core.getInput('token');
+    const dateFormat = core.getInput('date_format')
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const repo = repoFull[1]
@@ -17,7 +18,7 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment(new Date()).tz("America/New_York").format('YYYYMMD'); 
+    let today=moment(new Date()).tz("America/New_York").format(dateFormat); 
     
     console.log("FORMAT: ", today)
     

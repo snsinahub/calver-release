@@ -5,6 +5,8 @@ inputs:
     required: true
   token:
     required: true
+  date_format:
+    required: true
 outputs:
   newTag:
     description: newTag

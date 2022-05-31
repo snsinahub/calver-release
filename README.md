@@ -10,6 +10,7 @@ steps:
         with: 
           repo: "${{ github.repository }}"
           token: "${{ secrets.GITHUB_TOKEN }}"
+          date_format: "YYYYMMD"
       - name: print new tag
         run: |
           echo ${{ steps.tag-generator.outputs.newTag }}
