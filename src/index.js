@@ -31,9 +31,9 @@ async function run() {
         return obj.name.includes(today + '.')
     })
     
-            
+    console.log(matches)
     let allTags = _.map(matches, 'name')
-    console.log(JSON.stringify(allTags, null , 2))
+    console.log(allTags)
     let arrLen = allTags.length            
     let iteration = 0
     if(arrLen > 0) {
