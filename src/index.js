@@ -37,8 +37,9 @@ async function run() {
     console.log("arrLen " + arrLen)
     if(arrLen > 0) {
         let sorted = _.sortBy(allTags)
-
-        let iterationArr = sorted[(arrLen)].split('.')
+        console.log("sorted " + sorted)
+        console.log("sorted arrLen-1 " + sorted[(arrLen-1)])
+        let iterationArr = sorted[(arrLen-1)].split('.')
         console.log("iterationArr.length " + iterationArr.length)
         iteration = parseInt(iterationArr[(iterationArr.length-1)])
         console.log("iterationArr " + iterationArr)
