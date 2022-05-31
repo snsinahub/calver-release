@@ -31,36 +31,17 @@ async function run() {
     
     console.log("MATCHES: " + matches)
     let allTags = _.map(matches, 'name')
-    console.log("ALL TAGS: " + allTags)
     let arrLen = allTags.length            
     let iteration = 0
-    console.log("arrLen " + arrLen)
     let itr = []
     for (let i = 0; i < arrLen; i++) {
         let temp = allTags[i].split('.')
         itr[i] = temp[(temp.length-1)]
     }
-    console.log("ITR " + itr)
     itr.sort(function(a, b) {
         return a - b;
       });
-    let sortedItr = itr
-    console.log("sortedItr " + sortedItr)
-    let lastItr = parseInt(sortedItr[(sortedItr.length-1)])
-
-    console.log("sortedItr.length-1 " + (sortedItr.length-1))
-    console.log("sortedItr " + sortedItr)
-    // if(arrLen > 0) {
-    //     let sorted = _.sortBy(allTags)
-    //     console.log("sorted " + sorted)
-    //     console.log("sorted arrLen-1 " + sorted[(arrLen-1)])
-    //     let iterationArr = sorted[(arrLen-1)].split('.')
-    //     console.log("iterationArr.length " + iterationArr.length)
-    //     iteration = parseInt(iterationArr[(iterationArr.length-1)])
-    //     console.log("iterationArr " + iterationArr)
-    //     console.log("iterationArr[1] " + iterationArr[(iterationArr.length-1)])
-    //     console.log("iteration " + iteration)
-    // }
+    let lastItr = parseInt(itr[(itr.length-1)])
 
     iteration = (lastItr + 1)
     let newTag = today + "." + iteration
