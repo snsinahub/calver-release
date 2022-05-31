@@ -41,7 +41,10 @@ async function run() {
         itr[i] = temp[(temp.length-1)]
     }
     console.log("ITR " + itr)
-    let sortedItr = _.sortBy(itr)
+    itr.sort(function(a, b) {
+        return a - b;
+      });
+    let sortedItr = itr
     console.log("sortedItr " + sortedItr)
     let lastItr = parseInt(sortedItr[(sortedItr.length-1)])
 
