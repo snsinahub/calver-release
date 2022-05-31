@@ -29,7 +29,6 @@ async function run() {
         return obj.name.includes(today + '.')
     })
     
-    console.log("MATCHES: " + matches)
     let allTags = _.map(matches, 'name')
     let arrLen = allTags.length            
     let iteration = 0
