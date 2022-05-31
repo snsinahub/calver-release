@@ -35,19 +35,27 @@ async function run() {
     let arrLen = allTags.length            
     let iteration = 0
     console.log("arrLen " + arrLen)
-    if(arrLen > 0) {
-        let sorted = _.sortBy(allTags)
-        console.log("sorted " + sorted)
-        console.log("sorted arrLen-1 " + sorted[(arrLen-1)])
-        let iterationArr = sorted[(arrLen-1)].split('.')
-        console.log("iterationArr.length " + iterationArr.length)
-        iteration = parseInt(iterationArr[(iterationArr.length-1)])
-        console.log("iterationArr " + iterationArr)
-        console.log("iterationArr[1] " + iterationArr[(iterationArr.length-1)])
-        console.log("iteration " + iteration)
+    let itr = []
+    for (let i = 0; i < arrLen; i++) {
+        let temp = allTags.split('.')
+        itr[i] = temp[(temp.length-1)]
     }
+    console.log("ITR " + itr)
+    let sortedItr = _.sortBy(itr)
+    let lastItr = sortedItr[(sortedItr.length-1)]
+    // if(arrLen > 0) {
+    //     let sorted = _.sortBy(allTags)
+    //     console.log("sorted " + sorted)
+    //     console.log("sorted arrLen-1 " + sorted[(arrLen-1)])
+    //     let iterationArr = sorted[(arrLen-1)].split('.')
+    //     console.log("iterationArr.length " + iterationArr.length)
+    //     iteration = parseInt(iterationArr[(iterationArr.length-1)])
+    //     console.log("iterationArr " + iterationArr)
+    //     console.log("iterationArr[1] " + iterationArr[(iterationArr.length-1)])
+    //     console.log("iteration " + iteration)
+    // }
 
-    iteration = iteration + 1
+    iteration = lastItr + 1
     let newTag = today + "." + iteration
     console.log("NEW TAG: " + newTag)
     core.setOutput("newTag", newTag)
