@@ -31,15 +31,19 @@ async function run() {
         return obj.name.includes(today + '.')
     })
     
-    console.log(matches)
+    console.log("MATCHES: " + matches)
     let allTags = _.map(matches, 'name')
-    console.log(allTags)
+    console.log("ALL TAGS: " + allTags)
     let arrLen = allTags.length            
     let iteration = 0
+    console.log("arrLen " + arrLen)
     if(arrLen > 0) {
         let sorted = _.sortBy(allTags)
         let iterationArr = sorted[(arrLen-1)].split('.')
         iteration = parseInt(iterationArr[1])
+        console.log("iterationArr " + iterationArr)
+        console.log("iterationArr[1] " + iterationArr[1])
+        console.log("iteration " + iteration)
     }
 
     iteration = iteration + 1
