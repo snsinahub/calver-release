@@ -26,12 +26,14 @@ async function run() {
         owner: owner,
         repo: repo
         })
+    console.log("OUTPUT: " + output['data'])
     let matches = _.filter(output['data'], function(obj){
         return obj.name.includes(today + '.')
     })
     
             
     let allTags = _.map(matches, 'name')
+    console.log(JSON.stringify(allTags, null , 2))
     let arrLen = allTags.length            
     let iteration = 0
     if(arrLen > 0) {
