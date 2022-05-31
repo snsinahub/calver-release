@@ -18,33 +18,30 @@ async function run() {
     const octokit = github.getOctokit(myToken)
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
-    let today=moment(new Date()).tz("America/New_York").format(dateFormat); 
-    
-    console.log("FORMAT: ", today)
+    let today=moment(new Date()).tz("America/New_York").format(dateFormat);  
     
     const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
         owner: owner,
         repo: repo
         })
+    
     let matches = _.filter(output['data'], function(obj){
         return obj.name.includes(today + '.')
     })
     
-            
     let allTags = _.map(matches, 'name')
     let arrLen = allTags.length            
     let iteration = 0
     if(arrLen > 0) {
         let sorted = _.sortBy(allTags)
         let iterationArr = sorted[(arrLen-1)].split('.')
-        iteration = parseInt(iterationArr[1])
+        iteration = parseInt(iterationArr[(iterationArr.length-1)])        
     }
 
     iteration = iteration + 1
     let newTag = today + "." + iteration
     console.log("NEW TAG: " + newTag)
-    core.setOutput("newTag", newTag)
-        
+    core.setOutput("newTag", newTag)      
     
 }
 
