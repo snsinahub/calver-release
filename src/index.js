@@ -43,6 +43,9 @@ async function run() {
     let lastItr = parseInt(itr[(itr.length-1)])
 
     iteration = (lastItr + 1)
+    if(isNaN(iteration)) {
+        iteration = 1
+    }
     let newTag = today + "." + iteration
     console.log("NEW TAG: " + newTag)
     core.setOutput("newTag", newTag)
