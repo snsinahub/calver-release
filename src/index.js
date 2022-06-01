@@ -32,16 +32,21 @@ async function run() {
     let allTags = _.map(matches, 'name')
     let arrLen = allTags.length            
     let iteration = 0
-    if(arrLen > 0) {
-        let sorted = _.sortBy(allTags)
-        let iterationArr = sorted[(arrLen-1)].split('.')
-        iteration = parseInt(iterationArr[(iterationArr.length-1)])        
+    let itr = []
+    for (let i = 0; i < arrLen; i++) {
+        let temp = allTags[i].split('.')
+        itr[i] = temp[(temp.length-1)]
     }
+    itr.sort(function(a, b) {
+        return a - b;
+      });
+    let lastItr = parseInt(itr[(itr.length-1)])
 
-    iteration = iteration + 1
+    iteration = (lastItr + 1)
     let newTag = today + "." + iteration
     console.log("NEW TAG: " + newTag)
-    core.setOutput("newTag", newTag)      
+    core.setOutput("newTag", newTag)
+        
     
 }
 
