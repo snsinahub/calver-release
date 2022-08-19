@@ -38,8 +38,9 @@ async function run() {
         console.log("outputarray after: " + JSON.stringify(outputArray))
         console.log("outputarray data: " + JSON.stringify(outputArray['data']))
         _.concat(output, outputArray['data'])
-        console.log("OUTPUT------------------------------------------------------------------------------------------------------------" + )
+        console.log("OUTPUT Begin------------------------------------------------------------------------------------------------------------")
         console.log("OUTPUT after: " + JSON.stringify(output))
+        console.log("OUTPUT End------------------------------------------------------------------------------------------------------------")
     } while (outputArray['data'].length > 0)
 
     
