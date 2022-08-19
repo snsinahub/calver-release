@@ -21,14 +21,24 @@ async function run() {
     let today=moment(new Date()).tz("America/New_York").format(dateFormat);  
     console.log("TODAY: " + today)
     console.log("Date Format: " + dateFormat)
-    const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
-        owner: owner,
-        repo: repo,
-        per_page: 1000,
-        page: 1
-        })
+    let totalTags = 0
+    let page = 1
+    let output = []
+    do {
+
+        let outputArray = await octokit.request('GET /repos/{owner}/{repo}/tags', {
+            owner: owner,
+            repo: repo,
+            per_page: 100,
+            page: page
+            })
+        page ++
+        _.concat(output, outputArray['data'])
+    } while (outputArray.length > 0)
+
     
-    let matches = _.filter(output['data'], function(obj){
+    
+    let matches = _.filter(output, function(obj){
         
         let tagName = obj.name
         let searched = tagName.search(today)
@@ -36,7 +46,7 @@ async function run() {
         console.log("SEARCHed: " + searched)
         return obj.name.includes(`'${today}'`)
     })
-    console.log("output: " + JSON.stringify(output['data']))
+    console.log("output: " + JSON.stringify(output))
     console.log("matches: " + matches)
     let allTags = _.map(matches, 'name')
 
