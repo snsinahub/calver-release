@@ -23,7 +23,9 @@ async function run() {
     console.log("Date Format: " + dateFormat)
     const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
         owner: owner,
-        repo: repo
+        repo: repo,
+        per_page: 1000,
+        page: 2
         })
     
     let matches = _.filter(output['data'], function(obj){
