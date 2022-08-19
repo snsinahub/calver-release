@@ -36,8 +36,12 @@ async function run() {
     let iteration = 0
     let itr = []
     for (let i = 0; i < arrLen; i++) {
+        console.log("TAG: " + allTags[i])
         let temp = allTags[i].split('.')
+        console.log("TEMP: " + temp)
         itr[i] = temp[(temp.length-1)]
+        console.log("ITR I: " + temp[(temp.length-1)])
+        console.log("TEMP INDEX: " + (temp.length-1))
     }
     itr.sort(function(a, b) {
         return a - b;
