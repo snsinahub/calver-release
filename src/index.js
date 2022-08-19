@@ -29,7 +29,7 @@ async function run() {
     let matches = _.filter(output['data'], function(obj){
         console.log("OBJ: " + JSON.stringify(obj))
         console.log("OBJ NAME: " + obj.name)
-        return obj.name.includes(today)
+        return obj.name.includes(`'${today}'`)
     })
     console.log("output: " + JSON.stringify(output['data']))
     console.log("matches: " + matches)
