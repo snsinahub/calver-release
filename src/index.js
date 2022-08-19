@@ -37,7 +37,7 @@ async function run() {
         console.log("apiPage: " + apiPage)
         console.log("outputarray after: " + JSON.stringify(outputArray))
         console.log("outputarray data: " + JSON.stringify(outputArray['data']))
-        output.push(outputArray['data'])
+        output.concat(outputArray['data'])
         console.log("OUTPUT Begin------------------------------------------------------------------------------------------------------------")
         console.log("OUTPUT after: " + JSON.stringify(output))
         console.log("OUTPUT End------------------------------------------------------------------------------------------------------------")
