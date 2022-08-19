@@ -29,7 +29,7 @@ async function run() {
     let matches = _.filter(output['data'], function(obj){
         return obj.name.includes(today + '.')
     })
-    console.log("output: " + output)
+    console.log("output: " + JSON.stringify(output))
     console.log("matches: " + matches)
     let allTags = _.map(matches, 'name')
     console.log("all tags: " + allTags)
