@@ -24,9 +24,10 @@ async function run() {
     let totalTags = 0
     let page = 1
     let output = []
+    let outputArray = []
     do {
 
-        let outputArray = await octokit.request('GET /repos/{owner}/{repo}/tags', {
+        outputArray = await octokit.request('GET /repos/{owner}/{repo}/tags', {
             owner: owner,
             repo: repo,
             per_page: 100,
