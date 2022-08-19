@@ -22,20 +22,23 @@ async function run() {
     console.log("TODAY: " + today)
     console.log("Date Format: " + dateFormat)
     let totalTags = 0
-    let page = 1
+    let apiPage = 1
     let output = []
     let outputArray = []
     do {
-
+        console.log("outputarray before: " + JSON.stringify(outputArray))
         outputArray = await octokit.request('GET /repos/{owner}/{repo}/tags', {
             owner: owner,
             repo: repo,
             per_page: 100,
-            page: page
+            page: apiPage
             })
         page ++
+        console.log("apiPage: " + apiPage)
+        console.log("outputarray after: " + JSON.stringify(outputArray))
+        console.log("outputarray data: " + JSON.stringify(outputArray['data']))
         _.concat(output, outputArray['data'])
-    } while (outputArray.length > 0)
+    } while (outputArray['data'].length > 0)
 
     
     
