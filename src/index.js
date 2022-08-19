@@ -25,7 +25,7 @@ async function run() {
         owner: owner,
         repo: repo,
         per_page: 1000,
-        page: 2
+        page: 1
         })
     
     let matches = _.filter(output['data'], function(obj){
