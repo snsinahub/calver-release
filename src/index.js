@@ -32,6 +32,7 @@ async function run() {
     console.log("output: " + JSON.stringify(output))
     console.log("matches: " + matches)
     let allTags = _.map(matches, 'name')
+    
     console.log("all tags: " + allTags)
     let arrLen = allTags.length            
     let iteration = 0
