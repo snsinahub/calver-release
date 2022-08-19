@@ -19,7 +19,8 @@ async function run() {
     console.log("Owner: " + owner)
     console.log("Repo: " + repo)
     let today=moment(new Date()).tz("America/New_York").format(dateFormat);  
-    
+    console.log("TODAY: " + today)
+    console.log("Date Format: " + dateFormat)
     const output = await octokit.request('GET /repos/{owner}/{repo}/tags', {
         owner: owner,
         repo: repo
