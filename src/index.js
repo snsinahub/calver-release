@@ -30,6 +30,7 @@ async function run() {
     })
     
     let allTags = _.map(matches, 'name')
+    console.log(allTags)
     let arrLen = allTags.length            
     let iteration = 0
     let itr = []
@@ -43,6 +44,8 @@ async function run() {
     let lastItr = parseInt(itr[(itr.length-1)])
 
     iteration = (lastItr + 1)
+    console.log(lastItr)
+
     if(isNaN(iteration)) {
         iteration = 1
     }
