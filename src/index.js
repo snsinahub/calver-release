@@ -33,7 +33,7 @@ async function run() {
             per_page: 100,
             page: apiPage
             })
-        page ++
+        apiPage++
         console.log("apiPage: " + apiPage)
         console.log("outputarray after: " + JSON.stringify(outputArray))
         console.log("outputarray data: " + JSON.stringify(outputArray['data']))
