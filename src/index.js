@@ -48,10 +48,9 @@ async function run() {
     let matches = _.filter(output, function(obj){
         
         let tagName = obj.name
-        let searched = tagName.search(today)
-        console.log("OBJ NAME: " + obj.name)
-        console.log("SEARCHed: " + searched)
-        return obj.name.includes(`'${today}'`)
+        
+        console.log("OBJ NAME: " + obj.name)        
+        return obj.name.includes(today)
     })
     console.log("output: " + JSON.stringify(output))
     console.log("matches: " + matches)
