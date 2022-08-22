@@ -10,23 +10,17 @@ async function run() {
     const dateFormat = core.getInput('date_format')
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
+    const timeZone = core.getInput('time_zone');
     const repo = repoFull[1]
     const owner = repoFull[0]
-
-
     
     const octokit = github.getOctokit(myToken)
-    console.log("Owner: " + owner)
-    console.log("Repo: " + repo)
-    let today=moment(new Date()).tz("America/New_York").format(dateFormat);  
-    console.log("TODAY: " + today)
-    console.log("Date Format: " + dateFormat)
+    let today=moment(new Date()).tz(timeZone).format(dateFormat);  
     let totalTags = 0
     let apiPage = 1
     let output = []
     let outputArray = []
-    do {
-        console.log("outputarray before: " + JSON.stringify(outputArray))
+    do {        
         outputArray = await octokit.request('GET /repos/{owner}/{repo}/tags', {
             owner: owner,
             repo: repo,
@@ -34,13 +28,7 @@ async function run() {
             page: apiPage
             })
         apiPage++
-        console.log("apiPage: " + apiPage)
-        console.log("outputarray after: " + JSON.stringify(outputArray))
-        console.log("outputarray data: " + JSON.stringify(outputArray['data']))
-        output.push(...outputArray['data'])
-        console.log("OUTPUT Begin------------------------------------------------------------------------------------------------------------")
-        console.log("OUTPUT after: " + JSON.stringify(output))
-        console.log("OUTPUT End------------------------------------------------------------------------------------------------------------")
+        output.push(...outputArray['data'])        
     } while (outputArray['data'].length > 0)
 
     

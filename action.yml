@@ -2,11 +2,18 @@ name: getTag
 description: check who triggers the action and returns false or true if user is in allowed_users list
 inputs:
   repo:
-    required: true
+    required: false
+    default: ${{ github.repository }}
   token:
-    required: true
+    required: false
+    default: ${{ github.token }}
   date_format:
-    required: true
+    required: false
+    default: "YYYYMMD"
+  time_zone:
+    required: false
+    default: "America/New_York"
+  
 outputs:
   newTag:
     description: newTag
