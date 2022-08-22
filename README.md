@@ -115,7 +115,7 @@ you can separate year, month and day by `.`, `-` and more
   run: |
     echo ${{ steps.tag-generator.outputs.newTag }}
 ```
-
+ 
 
 ## External References
 - [Formatting JavaScript Dates with Moment.js](https://thecodebarbarian.com/formatting-javascript-dates-with-moment-js.html)
