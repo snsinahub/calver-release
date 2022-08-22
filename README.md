@@ -2,14 +2,14 @@
 
 ## Introduction
 
-Calver release is an action to dynamically generate github release tags based on calnder versioning. The generated tag is combination of today's date based on date format passed to the action and an incremental digit which indicates number of release for the specified day.
+Calver release is an action that dynamically generates github `release tags` based on calnder versioning. The generated tag is a combination of `today's date` based on date format passed to the action and an `incremental digit` which indicates release number for the specified day.
 
-For instance if date format is `YYYYMMD` then the first and second releases of the day will be (assume today is 08/22/2022)
+For instance if date format is `YYYYMMD` and today is 08/22/2022, then the first and second releases of the day will be 
 - 2022082.1
 - 2022082.2
 
-## Date formats 
-This action uses moment.js and JS date format, here is list of few supported date formats 
+## Formating Date
+This action uses moment.js and JS date format, here is few examples of supported date formats tokens
 
 - YYYY: 4-digit year '2022'
 - YY: 2-digit year '22'
@@ -20,9 +20,14 @@ This action uses moment.js and JS date format, here is list of few supported dat
 - DD: Day of the month, zero-padded '22'
 - D: Day of the month '22'
 - Do: Day of the month with numeric ordinal contraction '22nd'
+- HH: hour
 
-### Note
-you can separate year, month and day by `.`, `-` and more
+
+### Date formats Examples
+you can separate year, month and day by `.`, `-` and more 
+- YYYYMMD: `20220822`
+- YYYY-MM-D: `2022-08-22`
+- YYYY.MM.D: `2022.08.22`
 
 ## Inputs
 ```YAML
@@ -34,7 +39,7 @@ you can separate year, month and day by `.`, `-` and more
       repo: ''
     
       # Token to access to the repository
-      # GITHUB_TOKEN for same repository
+      # GITHUB_TOKEN can be used to access to the same repository
       # If you'd like to access to another repository you can use either PAT(Personal Access Token) Or use a service account
       # Using Service Account with least permissions is recommended 
       # default: ${{ github.token }}
@@ -110,3 +115,8 @@ you can separate year, month and day by `.`, `-` and more
   run: |
     echo ${{ steps.tag-generator.outputs.newTag }}
 ```
+
+
+## External References
+- [Formatting JavaScript Dates with Moment.js](https://thecodebarbarian.com/formatting-javascript-dates-with-moment-js.html)
+- [Moment.js](https://momentjs.com/)
