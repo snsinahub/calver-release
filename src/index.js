@@ -11,8 +11,8 @@ async function run() {
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const timeZone = core.getInput('time_zone');
-    const prepend = core.getInput('prepend');
-    const append = core.getInput('append');
+    const a_prepend = core.getInput('prepend');
+    const a_append = core.getInput('a_append');
     const append_prepend_separator = core.getInput('append_prepend_separator');
     const repo = repoFull[1]
     const owner = repoFull[0]
@@ -36,19 +36,19 @@ async function run() {
 
     
     let tagName = ''
-    if( prepend || prepend.length > 0 ) {
-        tagName = prepend + append_prepend_separator + today
+    if( a_prepend || a_prepend.length > 0 ) {
+        tagName = a_prepend + append_prepend_separator + today
     }
 
-    if( append || append.length > 0 ) {
-        tagName = today + append_prepend_separator + append
+    if( a_append || a_append.length > 0 ) {
+        tagName = today + append_prepend_separator + a_append
     }
 
-    if( !append && !prepend) {
+    if( !a_append && !a_prepend) {
         tagName = today
     }
 
-    console.log("INPUTS: " + prepend + ' --- ' + append + ' --- ' + append_prepend_separator)
+    console.log("INPUTS: " + a_prepend + ' --- ' + a_append + ' --- ' + append_prepend_separator)
 
 
     let matches = _.filter(output, function(obj){
