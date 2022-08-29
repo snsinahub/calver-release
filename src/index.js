@@ -48,6 +48,7 @@ async function run() {
         tagName = today
     }
 
+    console.log("INPUTS: " + prepend + ' --- ' + append + ' --- ' + append_prepend_separator)
 
 
     let matches = _.filter(output, function(obj){
