@@ -52,7 +52,7 @@ async function run() {
         
         let tagName = obj.name
         
-        console.log("OBJ NAME: " + obj.name + ' --- ' + obj.name.includes(tagName))        
+        console.log("OBJ NAME: " + obj.name + ' --- ' + tagName + ' --- ' + obj.name.includes(tagName))        
         return obj.name.includes(tagName)
     })
     console.log("output: " + JSON.stringify(output))
