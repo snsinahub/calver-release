@@ -48,9 +48,11 @@ async function run() {
         tagName = today
     }
 
+
+
     let matches = _.filter(output, function(obj){
         
-        let tagName = obj.name
+        
         
         console.log("OBJ NAME: " + obj.name + ' --- ' + tagName + ' --- ' + obj.name.includes(tagName))        
         return obj.name.includes(tagName)
