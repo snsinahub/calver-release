@@ -44,6 +44,10 @@ async function run() {
         tagName = today + append_prepend_separator + append
     }
 
+    if( !append && !prepend) {
+        tagName = today
+    }
+
     let matches = _.filter(output, function(obj){
         
         let tagName = obj.name
