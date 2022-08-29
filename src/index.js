@@ -35,13 +35,13 @@ async function run() {
     } while (outputArray['data'].length > 0)
 
     
-    let tagName = ''
+    let tagName = today
     if( prepend || prepend.length > 0 ) {
-        tagName = prepend + append_prepend_separator + today
+        tagName = prepend + append_prepend_separator + tagName
     }
 
     if( append || append.length > 0 ) {
-        tagName = today + append_prepend_separator + append
+        tagName = tagName + append_prepend_separator + append
     }
 
     if( !append && !prepend) {
