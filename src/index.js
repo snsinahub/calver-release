@@ -11,8 +11,8 @@ async function run() {
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const timeZone = core.getInput('time_zone');
-    const prepend = core.getInput('prepend');
-    const append = core.getInput('append');
+    const prepend = core.getInput('tag_prepend');
+    const append = core.getInput('tag_append');
     const append_prepend_separator = core.getInput('append_prepend_separator');
     const repo = repoFull[1]
     const owner = repoFull[0]

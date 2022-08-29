@@ -13,10 +13,10 @@ inputs:
   time_zone:
     required: false
     default: "America/New_York"
-  prepend:
+  tag_prepend:
     required: false
     default: ''
-  append:
+  tag_append:
     required: false
     default: ''
   append_prepend_separator:
