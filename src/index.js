@@ -11,6 +11,9 @@ async function run() {
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const timeZone = core.getInput('time_zone');
+    const prepend = core.getInput('prepend');
+    const append = core.getInput('append');
+    const append_prepend_separator = core.getInput('append_prepend_separator');
     const repo = repoFull[1]
     const owner = repoFull[0]
     
@@ -32,13 +35,21 @@ async function run() {
     } while (outputArray['data'].length > 0)
 
     
-    
+    let tagName = ''
+    if( prepend || prepend.length > 0 ) {
+        tagName = prepend + append_prepend_separator + today
+    }
+
+    if( append || append.length > 0 ) {
+        tagName = today + append_prepend_separator + append
+    }
+
     let matches = _.filter(output, function(obj){
         
         let tagName = obj.name
         
         console.log("OBJ NAME: " + obj.name)        
-        return obj.name.includes(today)
+        return obj.name.includes(tagName)
     })
     console.log("output: " + JSON.stringify(output))
     console.log("matches: " + matches)
@@ -67,10 +78,9 @@ async function run() {
     if(isNaN(iteration)) {
         iteration = 1
     }
-    let newTag = today + "." + iteration
+    let newTag = tagName + "." + iteration
     console.log("NEW TAG: " + newTag)
-    core.setOutput("newTag", newTag)
-        
+    core.setOutput("newTag", newTag)       
     
 }
 
