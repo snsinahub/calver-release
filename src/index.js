@@ -46,49 +46,33 @@ async function run() {
 
     if( !append && !prepend) {
         tagName = today
-    }
+    }   
 
-    console.log("INPUTS: " + prepend + ' --- ' + append + ' --- ' + append_prepend_separator)
-
-
-    let matches = _.filter(output, function(obj){
-        
-        
-        
-        console.log("OBJ NAME: " + obj.name + ' --- ' + tagName + ' --- ' + obj.name.includes(tagName))        
+    let matches = _.filter(output, function(obj) {           
         return obj.name.includes(tagName)
     })
-    console.log("output: " + JSON.stringify(output))
-    console.log("matches: " + matches)
     let allTags = _.map(matches, 'name')
 
-    console.log("all tags: " + allTags)
     let arrLen = allTags.length            
     let iteration = 0
     let itr = []
-    for (let i = 0; i < arrLen; i++) {
-        console.log("TAG: " + allTags[i])
+    for (let i = 0; i < arrLen; i++) {        
         let temp = allTags[i].split('.')
-        console.log("TEMP: " + temp)
-        itr[i] = temp[(temp.length-1)]
-        console.log("ITR I: " + temp[(temp.length-1)])
-        console.log("TEMP INDEX: " + (temp.length-1))
+        itr[i] = temp[(temp.length-1)]        
     }
     itr.sort(function(a, b) {
         return a - b;
       });
     let lastItr = parseInt(itr[(itr.length-1)])
 
-    iteration = (lastItr + 1)
-    console.log(lastItr)
+    iteration = (lastItr + 1)    
 
     if(isNaN(iteration)) {
         iteration = 1
     }
     let newTag = tagName + "." + iteration
     console.log("NEW TAG: " + newTag)
-    core.setOutput("newTag", newTag)       
-    
+    core.setOutput("newTag", newTag)           
 }
 
 run();
