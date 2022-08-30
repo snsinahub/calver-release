@@ -48,7 +48,9 @@ async function run() {
         tagName = today
     }   
 
-    let matches = _.filter(output, function(obj) {           
+    let matches = _.filter(output, function(obj) {  
+        let contains = new RegExp('^' + tagName, 'i')   
+        console.log("CONTAINS: " + tagName + ' -- ' + contains) 
         return obj.name.includes(tagName)
     })
     let allTags = _.map(matches, 'name')
