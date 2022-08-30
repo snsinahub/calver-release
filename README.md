@@ -31,7 +31,7 @@ you can separate year, month and day by `.`, `-` and more
 
 ## Inputs
 ```YAML
-  - uses: snsinahub/calver-release@v1.0.0
+  - uses: snsinahub/calver-release@v1.1.0
     with: 
       # Repository name 
       # default: ${{ github.repository }}
@@ -56,6 +56,17 @@ you can separate year, month and day by `.`, `-` and more
       # required: false
       time_zone:   
 
+      # required: false
+      # default: ''
+      tag_prepend:
+    
+      # required: false
+      # default: ''
+      tag_append:
+    
+      # required: false
+      # default: '.'
+      append_prepend_separator:    
 
 ```
 
@@ -75,7 +86,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.0.0  
+  uses: snsinahub/calver-release@v1.1.0  
 - name: print new tag
   run: |
     echo ${{ steps.tag-generator.outputs.newTag }}
@@ -88,7 +99,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.0.0
+  uses: snsinahub/calver-release@v1.1.0
   with: 
     repo: "${{ github.repository }}"
     token: "${{ secrets.GITHUB_TOKEN }}"
@@ -105,7 +116,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.0.0
+  uses: snsinahub/calver-release@v1.1.0
   with: 
     repo: "${{ github.repository }}"
     token: "${{ secrets.GITHUB_TOKEN }}"
@@ -114,6 +125,40 @@ you can separate year, month and day by `.`, `-` and more
 - name: print new tag
   run: |
     echo ${{ steps.tag-generator.outputs.newTag }}
+```
+
+## Adding prefix
+```YAML
+- name: get a new tag
+  id: tag-generator
+  uses: snsinahub/calver-release@v1.1.0
+  with: 
+    date_format: "${{ github.event.inputs.date_format }}"   
+    tag_prepend: ${{ github.event.inputs.tag_prepend }}    
+    append_prepend_separator: ${{ github.event.inputs.append_prepend_separator }}
+```
+
+## Adding postfix
+```YAML
+- name: get a new tag
+  id: tag-generator
+  uses: snsinahub/calver-release@v1.1.0
+  with: 
+    date_format: "${{ github.event.inputs.date_format }}"   
+    tag_append: ${{ github.event.inputs.tag_append }}
+    append_prepend_separator: ${{ github.event.inputs.append_prepend_separator }}
+```
+
+## Adding both prefix and postfix
+```YAML
+- name: get a new tag
+  id: tag-generator
+  uses: snsinahub/calver-release@v1.1.0
+  with: 
+    date_format: "${{ github.event.inputs.date_format }}"   
+    tag_prepend: ${{ github.event.inputs.tag_prepend }}
+    tag_append: ${{ github.event.inputs.tag_append }}
+    append_prepend_separator: ${{ github.event.inputs.append_prepend_separator }}
 ```
  
 

@@ -11,6 +11,9 @@ async function run() {
     const repoFull = core.getInput('repo').split('/');    
     const allowedUsers = core.getInput('allowed_users');
     const timeZone = core.getInput('time_zone');
+    const prepend = core.getInput('tag_prepend');
+    const append = core.getInput('tag_append');
+    const append_prepend_separator = core.getInput('append_prepend_separator');
     const repo = repoFull[1]
     const owner = repoFull[0]
     
@@ -32,46 +35,44 @@ async function run() {
     } while (outputArray['data'].length > 0)
 
     
-    
-    let matches = _.filter(output, function(obj){
-        
-        let tagName = obj.name
-        
-        console.log("OBJ NAME: " + obj.name)        
-        return obj.name.includes(today)
+    let tagName = today
+    if( prepend || prepend.length > 0 ) {
+        tagName = prepend + append_prepend_separator + tagName
+    }
+
+    if( append || append.length > 0 ) {
+        tagName = tagName + append_prepend_separator + append
+    }
+
+    if( !append && !prepend) {
+        tagName = today
+    }   
+
+    let matches = _.filter(output, function(obj) {          
+        return obj.name.startsWith(tagName)
     })
-    console.log("output: " + JSON.stringify(output))
-    console.log("matches: " + matches)
     let allTags = _.map(matches, 'name')
 
-    console.log("all tags: " + allTags)
     let arrLen = allTags.length            
     let iteration = 0
     let itr = []
-    for (let i = 0; i < arrLen; i++) {
-        console.log("TAG: " + allTags[i])
+    for (let i = 0; i < arrLen; i++) {        
         let temp = allTags[i].split('.')
-        console.log("TEMP: " + temp)
-        itr[i] = temp[(temp.length-1)]
-        console.log("ITR I: " + temp[(temp.length-1)])
-        console.log("TEMP INDEX: " + (temp.length-1))
+        itr[i] = temp[(temp.length-1)]        
     }
     itr.sort(function(a, b) {
         return a - b;
       });
     let lastItr = parseInt(itr[(itr.length-1)])
 
-    iteration = (lastItr + 1)
-    console.log(lastItr)
+    iteration = (lastItr + 1)    
 
     if(isNaN(iteration)) {
         iteration = 1
     }
-    let newTag = today + "." + iteration
+    let newTag = tagName + "." + iteration
     console.log("NEW TAG: " + newTag)
-    core.setOutput("newTag", newTag)
-        
-    
+    core.setOutput("newTag", newTag)           
 }
 
 run();
