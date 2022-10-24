@@ -31,7 +31,7 @@ you can separate year, month and day by `.`, `-` and more
 
 ## Inputs
 ```YAML
-  - uses: snsinahub/calver-release@v1.1.0
+  - uses: snsinahub/calver-release@v1.2.0
     with: 
       # Repository name 
       # default: ${{ github.repository }}
@@ -86,7 +86,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0  
+  uses: snsinahub/calver-release@v1.2.0  
 - name: print new tag
   run: |
     echo ${{ steps.tag-generator.outputs.newTag }}
@@ -99,7 +99,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0
+  uses: snsinahub/calver-release@v1.2.0
   with: 
     repo: "${{ github.repository }}"
     token: "${{ secrets.GITHUB_TOKEN }}"
@@ -116,7 +116,7 @@ you can separate year, month and day by `.`, `-` and more
   uses: actions/checkout@v2
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0
+  uses: snsinahub/calver-release@v1.2.0
   with: 
     repo: "${{ github.repository }}"
     token: "${{ secrets.GITHUB_TOKEN }}"
@@ -131,7 +131,7 @@ you can separate year, month and day by `.`, `-` and more
 ```YAML
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0
+  uses: snsinahub/calver-release@v1.2.0
   with: 
     date_format: "${{ github.event.inputs.date_format }}"   
     tag_prepend: ${{ github.event.inputs.tag_prepend }}    
@@ -142,7 +142,7 @@ you can separate year, month and day by `.`, `-` and more
 ```YAML
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0
+  uses: snsinahub/calver-release@v1.2.0
   with: 
     date_format: "${{ github.event.inputs.date_format }}"   
     tag_append: ${{ github.event.inputs.tag_append }}
@@ -153,7 +153,7 @@ you can separate year, month and day by `.`, `-` and more
 ```YAML
 - name: get a new tag
   id: tag-generator
-  uses: snsinahub/calver-release@v1.1.0
+  uses: snsinahub/calver-release@v1.2.0
   with: 
     date_format: "${{ github.event.inputs.date_format }}"   
     tag_prepend: ${{ github.event.inputs.tag_prepend }}
